@@ -1,0 +1,32 @@
+For your kind reference am sharing the code below:
+<script type="text/javascript">
+window.onload = init_loader;
+function init_loader (){
+var head = document.getElementsByTagName('input').item(0);
+document.getElementById('loader').onclick = function () {
+var script = document.createElement('script');
+script.setAttribute( 'type', 'text/javascript' );
+script.setAttribute( 'src', 'remote.php?value=my message' );
+head.insertBefore( script, head.firstChild );
+};
+};
+</script>
+</head>
+<body>
+<form action="upload_file.php" method="post" enctype="multipart/form-data">
+<label for="file">Upload the bookinfo.xml : </label>
+<input type="file" name="file" id="file" /><br/><br/>
+<input type="submit" name="submit" value="Upload" />
+<br/>
+<input id="loader" type="button" value="Transform!"/><!--while mouse click triggering the transformation-->
+</form>
+</body>
+</html>
+
+-----------
+remote.php
+-----------
+<?php
+echo exec('trans.bat');
+?>
+-----------
